@@ -1,0 +1,50 @@
+version: '3.3'
+
+services:
+  tpot-autogluon-flaml:
+    build: .
+    command:
+      [
+        'jupyter',
+        'lab',
+        '--port=10000',
+        '--no-browser',
+        "--ServerApp.token=''",
+        "--ServerApp.password=''"
+      ]
+    ports:
+      - 10000:10000
+    volumes:
+      - ../:/home/jovyan
+  auto-sklearn:
+    build:
+      dockerfile: auto-sklearn/Dockerfile
+    command:
+      [
+        'jupyter',
+        'lab',
+        '--port=10001',
+        '--no-browser',
+        "--ServerApp.token=''",
+        "--ServerApp.password=''"
+      ]
+    ports:
+      - 10001:10001
+    volumes:
+      - ../:/home/jovyan
+  h2o:
+    build:
+      dockerfile: h2o/Dockerfile
+    command:
+      [
+        'jupyter',
+        'lab',
+        '--port=10002',
+        '--no-browser',
+        "--ServerApp.token=''",
+        "--ServerApp.password=''"
+      ]
+    ports:
+      - 10002:10002
+    volumes:
+      - ../:/home/jovyan
